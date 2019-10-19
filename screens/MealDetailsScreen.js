@@ -1,25 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+import { CATEGORIES, MEALS } from "../data/dummy-data"
+
 const MealDetailsScreen = props => {
+
+  const mealTitle = props.navigation.getParam("mealTitle")
 
   return (
 
     <View style={styles.screen}>
       
-      <Button title={"Go back to cats"} onPress={ () => {
-
-        props.navigation.replace("Categories")
-
-      }
-        
-    }
-      />
+      <Text>{mealTitle}</Text>
 
     </View>
 
   );
 
+}
+
+MealDetailsScreen.navigationOptions = (navigationData) => {
+
+  const mealTitle = navigationData.navigation.getParam("mealTitle")//Get the params from the navigationData object passed to this function
+
+  const selectedMeal = MEALS.find(cat => cat.title === mealTitle)//Search the array for the object containing the key
+
+  return {
+
+      headerTitle: selectedMeal.title
+
+  }
+  
 }
 
 const styles = StyleSheet.create({
@@ -29,7 +40,6 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "purple"
     }
 });
 
