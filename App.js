@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useScreens } from "react-native-screens"
 
 import * as Font from "expo-font"
 import {AppLoading} from "expo"
 
 import MealsNavigator from "./navigation/mealsNavigator"
+
+useScreens()
 
 const fetchFonts = () => {//returns a promise
 
