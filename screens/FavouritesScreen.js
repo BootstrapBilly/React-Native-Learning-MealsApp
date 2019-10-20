@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Colors from "../constants/Colors"
 import MealItem from "../components/MealItem"
+import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import HeaderButtonComp from '../components/HeaderButton';
+
 
 import MealList from "../components/MealList"
 import { CATEGORIES, MEALS } from "../data/dummy-data"
@@ -27,7 +30,15 @@ FavouritesScreen.navigationOptions = (navigationData) => {
       headerStyle: {
           backgroundColor: Colors.midYellow
       },
-      headerTintColor: "white"
+      headerTintColor: "white",
+      headerLeft: 
+
+      <HeaderButtons HeaderButtonComponent={HeaderButtonComp}>
+
+        <Item title="Menu-Icon" iconName="md-menu" onPress={() => navData.navigation.toggleDrawer()}/>
+
+      </HeaderButtons>
+
   }
   
 }

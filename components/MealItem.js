@@ -21,9 +21,9 @@ const MealItem = props => {
 
                 <View style={{...styles.mealText, ...styles.mealDetails}}>
 
-                    <Text>{props.complexity.toUpperCase()}</Text>
-                    <Text>{props.duration}</Text>
-                    <Text>{props.affordability.toUpperCase()}</Text>
+                    <Text style={styles.mealInfoText}>{props.complexity.toUpperCase()}</Text>
+                    <Text style={styles.mealInfoText}>{props.duration}</Text>
+                    <Text style={styles.mealInfoText}>{props.affordability.toUpperCase()}</Text>
                     
                 </View>
 
@@ -56,6 +56,12 @@ const styles = StyleSheet.create({
     mealText : {
 
         flexDirection: "row",
+    },
+
+    mealInfoText : {
+
+        fontFamily: "open-sans-bold"
+
     },
 
     mealHeader : {

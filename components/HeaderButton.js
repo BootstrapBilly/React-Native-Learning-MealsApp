@@ -10,7 +10,7 @@ const HeaderButtonComp = props => {
 
     return (
 
-     <HeaderButton {...props} IconComponent={Ionicons} iconSize={27} color={Colors.lightYellow}/>
+     <HeaderButton {...props} IconComponent={Ionicons} iconSize={27} color={"white"}/>
 
     )
 
