@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { HeaderButtons, Item } from "react-navigation-header-buttons"
 
 import { CATEGORIES, MEALS } from "../data/dummy-data"
+import HeaderButtonComp from '../components/HeaderButton';
 
 const MealDetailsScreen = props => {
 
@@ -10,7 +12,7 @@ const MealDetailsScreen = props => {
   return (
 
     <View style={styles.screen}>
-      
+
       <Text>{mealTitle}</Text>
 
     </View>
@@ -27,20 +29,27 @@ MealDetailsScreen.navigationOptions = (navigationData) => {
 
   return {
 
-      headerTitle: selectedMeal.title
+    headerTitle: selectedMeal.title,
+    headerRight:
+
+      <HeaderButtons HeaderButtonComponent={HeaderButtonComp}>
+
+        <Item title="Favourite" iconName="md-star-outline" onPress={() => console.log("Added")}/>
+
+      </HeaderButtons>
 
   }
-  
+
 }
 
 const styles = StyleSheet.create({
 
-    screen: {
+  screen: {
 
-        flex:1,
-        justifyContent: "center",
-        alignItems: "center",
-    }
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  }
 });
 
 export default MealDetailsScreen

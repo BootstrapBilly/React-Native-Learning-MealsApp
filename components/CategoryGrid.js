@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         flex: 1,
         height: Dimensions.get("window").height = 600 ? Dimensions.get("window").height * 0.2 : Dimensions.get("window").height * 0.15,
         margin: 15,
-        overflow: "hidden"
+        overflow: "hidden",
+        elevation: 5
 
 
     },
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         textAlign: "center",
-        elevation: 5,
+
         justifyContent:"flex-end",
         alignItems: "flex-end",
         borderRadius: 20,

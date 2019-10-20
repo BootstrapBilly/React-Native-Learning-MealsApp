@@ -18,9 +18,9 @@ const MealsNavigator = createStackNavigator({
     defaultNavigationOptions: {//Sets the default navigation options for every screen
 
         headerStyle: {
-            backgroundColor: Colors.lightBlue
+            backgroundColor: Colors.midBlue
         },
-        headerTintColor: Colors.blue
+        headerTintColor: Colors.lightYellow
     }
 });
 
