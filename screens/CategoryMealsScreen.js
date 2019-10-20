@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, FlatList, TouchableNativeFeedback } from 'react
 
 import { CATEGORIES, MEALS } from "../data/dummy-data"
 import Colors from "../constants/Colors"
-import MealItem from "../components/MealItem"
+import MealList from "../components/MealList"
+
 
 const CategoryMealsScreen = props => {
 
@@ -13,30 +14,9 @@ const CategoryMealsScreen = props => {
 
     const categoryMeals = MEALS.filter(meal => meal.categoryKeys.indexOf(categoryKey) >= 0)
 
-    const renderMeals = itemData => {
-
-        return (
-
-            <MealItem title={itemData.item.title} complexity={itemData.item.complexity} affordability={itemData.item.affordability} duration={itemData.item.duration} imgUrl={itemData.item.imageUrl} onSelectMeal={() => props.navigation.navigate({routeName: "MealDetail",params : {
-
-                mealTitle : itemData.item.title
-
-            }})}/>
-
-        )
-
-    }
-
-
     return (
 
-        <View style={styles.screen}>
-
-            <Text>{selectedCategory.title}</Text>
-
-            <FlatList data={categoryMeals} renderItem={renderMeals} keyExtractor={(item, index) => item.id} style={{width: "100%", height: "100%"}}/>
-
-        </View>
+        <MealList data={categoryMeals} navigation={props.navigation}/>
 
     );
 
@@ -51,19 +31,9 @@ CategoryMealsScreen.navigationOptions = (navigationData) => {
     return {
 
         headerTitle: selectedCategory.title
+
     }
     
 }
-
-const styles = StyleSheet.create({
-
-    screen: {
-
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    }
-
-});
 
 export default CategoryMealsScreen
