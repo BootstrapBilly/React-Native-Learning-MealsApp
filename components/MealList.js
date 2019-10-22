@@ -3,15 +3,25 @@ import { StyleSheet, Text, View, Button, FlatList, Dimensions, TouchableNativeFe
 
 import MealItem from "../components/MealItem"
 
+import { useSelector, useDispatch } from "react-redux";
+
 const MealList = props => {
 
+    const favMeals = useSelector(store => store.meals.favouriteMeals)
+
     const renderMeals = itemData => {
+
+        console.log(favMeals)
 
         return (
 
             <MealItem title={itemData.item.title} complexity={itemData.item.complexity} affordability={itemData.item.affordability} duration={itemData.item.duration} imgUrl={itemData.item.imageUrl} onSelectMeal={() => props.navigation.navigate({routeName: "MealDetail",params : {
 
-                mealId : itemData.item.id
+                mealId : itemData.item.id,
+                mealTitle: itemData.item.title,
+                mealIsFav: favMeals.some(meal => meal.id === itemData.item.id)
+                
+
 
             }})}/>
 

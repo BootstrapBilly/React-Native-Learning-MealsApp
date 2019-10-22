@@ -1,13 +1,24 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useScreens } from "react-native-screens"
+import {createStore, combineReducers} from "redux"
+import {Provider} from "react-redux"
 
 import * as Font from "expo-font"
 import {AppLoading} from "expo"
 
 import MealsNavigator from "./navigation/mealsNavigator"
+import mealsReducer from "./store/reducers/meals"
 
 useScreens()
+
+const rootReducer = combineReducers({
+
+  meals: mealsReducer//Takes a key value where the value is the reducer
+
+})
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {//returns a promise
 
@@ -38,7 +49,7 @@ export default function App() {
 
   return (
 
-    <MealsNavigator/>
+    <Provider store={store}><MealsNavigator/></Provider>
     
   );
 
@@ -51,4 +62,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });

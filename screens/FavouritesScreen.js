@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useSelector } from "react-redux";
 
 import Colors from "../constants/Colors"
 import MealItem from "../components/MealItem"
@@ -7,12 +8,24 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons"
 import HeaderButtonComp from '../components/HeaderButton';
 
 
+
 import MealList from "../components/MealList"
-import { CATEGORIES, MEALS } from "../data/dummy-data"
+import { CATEGORIES } from "../data/dummy-data"
 
 const FavouritesScreen = props => {
 
-  const favMeals = MEALS.filter(meal => meal.id === "m1" || meal.id === "m2" || meal.id === "m3")
+  const favouriteMeals = useSelector(state => state.meals.favouriteMeals)
+
+
+  if(favouriteMeals.length === 0){
+
+    return <Text>No Fav meals</Text>
+    
+  }
+
+  const availableMeals = useSelector(state => state.meals.favouriteMeals)
+
+  const favMeals = availableMeals.filter(meal => meal.id === "m1" || meal.id === "m2" || meal.id === "m3")
 
   return (
 

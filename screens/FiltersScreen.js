@@ -5,6 +5,9 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
 import Colors from '../constants/Colors';
 
+import { useSelector, useDispatch } from "react-redux";
+import {toggleFilters} from "../store/actions/meals"
+
 const FilterSwitch = props => {
   return (
     <View style={styles.filterContainer}>
@@ -20,6 +23,7 @@ const FilterSwitch = props => {
 };
 
 const FiltersScreen = props => {
+
   const { navigation } = props;
 
   const [isGlutenFree, setIsGlutenFree] = useState(false);
@@ -27,16 +31,20 @@ const FiltersScreen = props => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const dispatch = useDispatch();
+
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       glutenFree: isGlutenFree,
       lactoseFree: isLactoseFree,
       vegan: isVegan,
-      isVegetarian: isVegetarian
+      Vegetarian: isVegetarian
     };
 
-    console.log(appliedFilters);
+    dispatch(toggleFilters(appliedFilters))
   }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
+
+  
 
   useEffect(() => {
     navigation.setParams({ save: saveFilters });
